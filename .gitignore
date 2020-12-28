@@ -1,0 +1,5 @@
+node_modules
+dist
+deployment
+nlp/model.nlp
+nlp/nlp.json

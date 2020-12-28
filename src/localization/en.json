@@ -1,0 +1,14 @@
+{
+  "slackbot": {
+    "lightsOff": {
+      "turningOff": "Just a second, i'll turn them off right away...",
+      "lightsAreOff": "Light are now off.",
+      "noSceneId": "I'm sorry i don't know the scene id for SCENE_LIGHTS_OFF"
+    },
+    "lightStatus": {
+      "checking": "Just a second, let me check that for you...",
+      "lightsOn": "{0} lights ({1}) are on",
+      "lightsOff": "and rest of the {0} are off."
+    }
+  }
+}

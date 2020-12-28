@@ -1,0 +1,21 @@
+{
+  "name": "Corpus",
+  "locale": "en-US",
+  "data": [
+    {
+      "intent": "lights.status",
+      "utterances": [
+        "Lights",
+        "Lights status"
+      ]
+    },
+    {
+      "intent": "lights.off",
+      "utterances": [
+        "Lights off",
+        "Turn lights off",
+        "Turn all lights off"
+      ]
+    }
+  ]
+}

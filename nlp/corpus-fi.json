@@ -1,0 +1,23 @@
+{
+  "name": "Corpus",
+  "locale": "fi-FI",
+  "data": [
+    {
+      "intent": "lights.status",
+      "utterances": [
+        "Valojen tila",
+        "Mikä on valojen tilat",
+        "Mikä on valojen tila",
+        "Valot"
+      ]
+    },
+    {
+      "intent": "lights.off",
+      "utterances": [
+        "Valot pois",
+        "Pistä valot pois",
+        "Kaikki valot pois"
+      ]
+    }
+  ]
+}

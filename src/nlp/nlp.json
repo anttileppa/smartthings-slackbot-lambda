@@ -1,0 +1,480 @@
+{
+  "settings": {
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en",
+      "fi"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "lights": {
+            "intent": "lights.status",
+            "domain": "default"
+          },
+          "lights,status": {
+            "intent": "lights.status",
+            "domain": "default"
+          },
+          "lights,off": {
+            "intent": "lights.off",
+            "domain": "default"
+          },
+          "lights,off,turn": {
+            "intent": "lights.off",
+            "domain": "default"
+          },
+          "all,lights,off,turn": {
+            "intent": "lights.off",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "lights.status": "default",
+          "lights.off": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "Lights",
+            "intent": "lights.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "Lights status",
+            "intent": "lights.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "Lights off",
+            "intent": "lights.off"
+          },
+          {
+            "domain": "default",
+            "utterance": "Turn lights off",
+            "intent": "lights.off"
+          },
+          {
+            "domain": "default",
+            "utterance": "Turn all lights off",
+            "intent": "lights.off"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "lights": 1,
+              "status": 1,
+              "off": 1,
+              "turn": 1,
+              "all": 1
+            },
+            "intents": {
+              "lights.status": 1,
+              "lights.off": 1
+            },
+            "intentFeatures": {
+              "lights.status": {
+                "lights": 1,
+                "status": 1
+              },
+              "lights.off": {
+                "lights": 1,
+                "off": 1,
+                "turn": 1,
+                "all": 1
+              }
+            },
+            "featuresToIntent": {
+              "lights": [
+                "lights.status",
+                "lights.off"
+              ],
+              "status": [
+                "lights.status"
+              ],
+              "off": [
+                "lights.off"
+              ],
+              "turn": [
+                "lights.off"
+              ],
+              "all": [
+                "lights.off"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "lights",
+                "status",
+                "off",
+                "turn",
+                "all",
+                "nonefeature"
+              ],
+              "intents": [
+                "lights.status",
+                "lights.off",
+                "None"
+              ],
+              "perceptrons": [
+                [
+                  10.467036247253418,
+                  0.42426908016204834,
+                  -13.855249404907227,
+                  -2.6210551261901855,
+                  -0.8408743143081665,
+                  -3.4686315059661865,
+                  3.4957289133892187
+                ],
+                [
+                  0.30707234144210815,
+                  -2.3651716709136963,
+                  14.059548377990723,
+                  0.2123362123966217,
+                  -0.1066550761461258,
+                  -0.7285821437835693,
+                  -0.21067170692109047
+                ],
+                [
+                  -3.571383476257324,
+                  -0.6685562133789062,
+                  -0.6859796643257141,
+                  -0.2494930475950241,
+                  -0.07752515375614166,
+                  10.71424674987793,
+                  3.5714274155833436
+                ]
+              ]
+            }
+          }
+        }
+      },
+      "fi": {
+        "settings": {
+          "locale": "fi",
+          "trainByDomain": false,
+          "tag": "domain-manager-fi",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "tila,valo": {
+            "intent": "lights.status",
+            "domain": "default"
+          },
+          "mika,on,tila,valo": {
+            "intent": "lights.status",
+            "domain": "default"
+          },
+          "valo": {
+            "intent": "lights.status",
+            "domain": "default"
+          },
+          "pois,valo": {
+            "intent": "lights.off",
+            "domain": "default"
+          },
+          "pis,pois,valo": {
+            "intent": "lights.off",
+            "domain": "default"
+          },
+          "kaik,pois,valo": {
+            "intent": "lights.off",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "lights.status": "default",
+          "lights.off": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "Valojen tila",
+            "intent": "lights.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "Mikä on valojen tilat",
+            "intent": "lights.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "Mikä on valojen tila",
+            "intent": "lights.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "Valot",
+            "intent": "lights.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "Valot pois",
+            "intent": "lights.off"
+          },
+          {
+            "domain": "default",
+            "utterance": "Pistä valot pois",
+            "intent": "lights.off"
+          },
+          {
+            "domain": "default",
+            "utterance": "Kaikki valot pois",
+            "intent": "lights.off"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "fi",
+              "tag": "nlu-fi",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "valo": 1,
+              "tila": 1,
+              "mika": 1,
+              "on": 1,
+              "pois": 1,
+              "pis": 1,
+              "kaik": 1
+            },
+            "intents": {
+              "lights.status": 1,
+              "lights.off": 1
+            },
+            "intentFeatures": {
+              "lights.status": {
+                "valo": 1,
+                "tila": 1,
+                "mika": 1,
+                "on": 1
+              },
+              "lights.off": {
+                "valo": 1,
+                "pois": 1,
+                "pis": 1,
+                "kaik": 1
+              }
+            },
+            "featuresToIntent": {
+              "valo": [
+                "lights.status",
+                "lights.off"
+              ],
+              "tila": [
+                "lights.status"
+              ],
+              "mika": [
+                "lights.status"
+              ],
+              "on": [
+                "lights.status"
+              ],
+              "pois": [
+                "lights.off"
+              ],
+              "pis": [
+                "lights.off"
+              ],
+              "kaik": [
+                "lights.off"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "fi",
+                "tag": "nlu-fi",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "valo",
+                "tila",
+                "mika",
+                "on",
+                "pois",
+                "pis",
+                "kaik",
+                "nonefeature"
+              ],
+              "intents": [
+                "lights.status",
+                "lights.off",
+                "None"
+              ],
+              "perceptrons": [
+                [
+                  10.478275299072266,
+                  0.4596420228481293,
+                  -0.07228641211986542,
+                  -0.07228641211986542,
+                  -13.871437072753906,
+                  -1.9005730152130127,
+                  -1.7971065044403076,
+                  -3.476078510284424,
+                  3.5007398813615485
+                ],
+                [
+                  0.3375844955444336,
+                  -3.0459799766540527,
+                  -1.1673492193222046,
+                  -1.1673492193222046,
+                  13.923249244689941,
+                  0.3095272481441498,
+                  0.311278373003006,
+                  -0.7746143341064453,
+                  -0.2199297678075994
+                ],
+                [
+                  -3.5713772773742676,
+                  -0.7765277028083801,
+                  -0.21733395755290985,
+                  -0.21733395755290985,
+                  -0.7127585411071777,
+                  -0.17536237835884094,
+                  -0.14564016461372375,
+                  10.714235305786133,
+                  3.5714304005334983
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "Lights"
+      ],
+      [
+        "en",
+        "Lights status"
+      ],
+      [
+        "en",
+        "Lights off"
+      ],
+      [
+        "en",
+        "Turn lights off"
+      ],
+      [
+        "en",
+        "Turn all lights off"
+      ],
+      [
+        "fi",
+        "Valojen tila"
+      ],
+      [
+        "fi",
+        "Mikä on valojen tilat"
+      ],
+      [
+        "fi",
+        "Mikä on valojen tila"
+      ],
+      [
+        "fi",
+        "Valot"
+      ],
+      [
+        "fi",
+        "Valot pois"
+      ],
+      [
+        "fi",
+        "Pistä valot pois"
+      ],
+      [
+        "fi",
+        "Kaikki valot pois"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

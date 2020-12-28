@@ -1,0 +1,14 @@
+{
+  "slackbot": {
+    "lightsOff": {
+      "turningOff": "Hetki pieni, sammuttelen valot...",
+      "lightsAreOff": "Valot on nyt sammutettu.",
+      "noSceneId": "Pahoittelut mutta en taida tietää kohtausid:tä SCENE_LIGHTS_OFF"
+    },
+    "lightStatus": {
+      "checking": "Hetki pieni, tarkistan valojen tilat...",
+      "lightsOn": "{0} valoa ({1}) on päällä",
+      "lightsOff": "ja loput {0} ovat poissa päältä."
+    }
+  }
+}
