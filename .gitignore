@@ -3,3 +3,4 @@ dist
 deployment
 nlp/model.nlp
 nlp/nlp.json
+model.nlp

@@ -16,6 +16,12 @@
         "Turn lights off",
         "Turn all lights off"
       ]
+    },
+    {
+      "intent": "scenes.list",
+      "utterances": [
+        "List scenes"
+      ]
     }
   ]
 }

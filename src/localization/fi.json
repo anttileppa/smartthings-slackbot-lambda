@@ -1,14 +1,23 @@
 {
   "slackbot": {
+    "common": {
+      "unkownMessage": "Pahoittelut, nyt en aivan ymmärtänyt :confused:"
+    },
     "lightsOff": {
-      "turningOff": "Hetki pieni, sammuttelen valot...",
-      "lightsAreOff": "Valot on nyt sammutettu.",
-      "noSceneId": "Pahoittelut mutta en taida tietää kohtausid:tä SCENE_LIGHTS_OFF"
+      "turningOff": "Hetki pieni, sammuttelen valot... :thumbsup:",
+      "lightsAreOff": "Valot on nyt sammutettu. :sleeping:",
+      "noSceneId": "Pahoittelut mutta en taida tietää tilanneid:tä SCENE_LIGHTS_OFF"
     },
     "lightStatus": {
-      "checking": "Hetki pieni, tarkistan valojen tilat...",
-      "lightsOn": "{0} valoa ({1}) on päällä",
-      "lightsOff": "ja loput {0} ovat poissa päältä."
+      "checking": "Hetki pieni, tarkistan valojen tilat...:thumbsup:",
+      "lightsOn": "{0} valoa :bulb: ({1}) ovat päällä.\nLoput {2} ovat poissa päältä.",
+      "lightsAllOn": "Kaikki valot ovat päällä",
+      "lightsAllOff": "Kaikki valot ovat poissa päältä",
+      "error": "Voi harmi, jokin meni pieleen valojen tilan tarkistamisessa: {0}"
+    },
+    "scenesList": {
+      "listing": "Hetki pieni, haen tilanteiden tiedot sinulle...:thumbsup:",
+      "scenes": "Sinulla on käytössäsi seuraavat tilaneet: {0}"
     }
   }
 }

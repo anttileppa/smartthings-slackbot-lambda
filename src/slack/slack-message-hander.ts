@@ -1,4 +1,4 @@
-import { SmartThingsClient, BearerTokenAuthenticator, DeviceListOptions } from "@smartthings/core-sdk";
+import { SmartThingsClient, BearerTokenAuthenticator, DeviceListOptions, Device } from "@smartthings/core-sdk";
 import { WebClient } from '@slack/web-api';
 import NLP from "../nlp/nlp";
 import strings from "../localization/strings";
@@ -38,12 +38,7 @@ export default class SlackMessageHandler {
     const nlp = new NLP();
     const nlpResuilt = await nlp.process(message);
 
-    const { intent, locale } = nlpResuilt;
-    
-    if (intent === "None") {
-      return;
-    }
-            
+    const { intent, locale } = nlpResuilt;    
     strings.setLanguage(locale);
 
     try {
@@ -52,6 +47,10 @@ export default class SlackMessageHandler {
           return await this.handleLightsStatusMessage();
         case "lights.off":
           return await this.handleLightsOffMessage();
+        case "scenes.list":
+          return await this.handleScenesListMessage();
+        default:
+          return await this.handleUnknownMessage();
       }
     } catch (e) {
       await this.sendSlackMessage(`Error: ${e.message}`);
@@ -64,29 +63,38 @@ export default class SlackMessageHandler {
   private handleLightsStatusMessage = async () => {
     await this.sendSlackMessage(strings.slackbot.lightStatus.checking);
 
-    const lights = await this.smartThingsClient.devices.list({
-      capability: "light"
-    });
+    try {
+      const lights = await this.smartThingsClient.devices.list({
+        capability: "light"
+      });
+  
+      const lightsOff: Device[] = [];
+      const lightsOn: Device[] = [];
 
-    const lightsOff = [];
-    const lightsOn = [];
-
-    for (let i = 0; i < lights.length; i++) {
-      const light = lights[i];
-      if (light.deviceId) {
-        const status = await this.smartThingsClient.devices.getStatus(light.deviceId);
-        if (status?.components?.main?.light?.switch?.value === "on") {
-          lightsOn.push(light);
-        } else {
-          lightsOff.push(light);
+      await Promise.all(lights.map(async light => {
+        if (light.deviceId) {
+          const status = await this.smartThingsClient.devices.getStatus(light.deviceId);
+          if (status?.components?.main?.light?.switch?.value === "on") {
+            lightsOn.push(light);
+          } else {
+            lightsOff.push(light);
+          }
         }
+      }));
+  
+      if (lightsOff.length === 0) {
+        await this.sendSlackMessage(strings.slackbot.lightStatus.lightsAllOn);
+      } else if (lightsOn.length > 0) {
+        const lightsOnNames = lightsOn.map(device => device.name).join(", ");
+        const lightsOnCount = String(lightsOn.length);
+        const lightsOffCount = String(lightsOff.length);
+        await this.sendSlackMessage(strings.formatString(strings.slackbot.lightStatus.lightsOn, lightsOnCount, lightsOnNames, lightsOffCount) as string);
+      } else {
+        await this.sendSlackMessage(strings.slackbot.lightStatus.lightsAllOff);
       }
+    } catch (e) {
+      await this.sendSlackMessage(strings.formatString(strings.slackbot.lightStatus.error, e.message) as string);
     }
-    
-    const lightsOnNames = lightsOn.map(device => device.name).join(", ");
-        
-    await this.sendSlackMessage(strings.formatString(strings.slackbot.lightStatus.lightsOn, lightsOn.length.toString(), lightsOnNames) as string);
-    await this.sendSlackMessage(strings.formatString(strings.slackbot.lightStatus.lightsOff, lightsOff.length.toString()) as string);
   }
 
   /**
@@ -101,6 +109,27 @@ export default class SlackMessageHandler {
     await this.sendSlackMessage(strings.slackbot.lightsOff.turningOff);
     await this.smartThingsClient.scenes.execute(SCENE_LIGHTS_OFF);
     await this.sendSlackMessage(strings.slackbot.lightsOff.lightsAreOff); 
+  }
+
+  /**
+   * Handles scenes list message
+   */
+  private handleScenesListMessage = async () => {
+    await this.sendSlackMessage(strings.slackbot.scenesList.listing);
+    
+    const scenes = await this.smartThingsClient.scenes.list();
+    const texts = scenes.map(scene => {
+      return `${scene.sceneName} (${scene.sceneId})`;
+    }).join("\n");
+    
+    await this.sendSlackMessage(strings.formatString(strings.slackbot.scenesList.scenes, texts) as string);
+  }
+
+  /**
+   * Handles unknown messages
+   */
+  private handleUnknownMessage = async () => {
+    await this.sendSlackMessage(strings.slackbot.common.unkownMessage);
   }
 
   /**

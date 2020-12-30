@@ -4,7 +4,7 @@ import * as model from "./nlp.json";
 /**
  * NLP detected intent
  */
-export type Intent = "None" | "lights.status" | "lights.off";
+export type Intent = "None" | "lights.status" | "lights.off" | "scenes.list";
 
 /**
  * Natural language processing capabilities

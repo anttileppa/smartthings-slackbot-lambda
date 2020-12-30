@@ -35,7 +35,8 @@ export default class SlackEventHandler {
         return await this.handleUrlVerification(event);
       default:
         return {
-          statusCode: 200
+          statusCode: 200,
+          body: `Unkown event type`
         };
     }
   }
@@ -55,11 +56,17 @@ export default class SlackEventHandler {
           
           const messageHandler = new SlackMessageHandler(channel, this.slackToken, this.smartThingsToken);
           await messageHandler.handleMessage(message);
+
+          return {
+            statusCode: 200,
+            body: `Message processed`
+          };
         }
     }
 
     return {
-      statusCode: 200
+      statusCode: 200,
+      body: `Unkown callback event type`
     };
   }
 

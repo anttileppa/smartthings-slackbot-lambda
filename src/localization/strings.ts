@@ -8,6 +8,9 @@ import * as fi from "./fi.json";
 export interface IStrings extends LocalizedStringsMethods {
 
   slackbot: {
+    common: {
+      unkownMessage: string;
+    },
     lightsOff: {
       turningOff: string;
       noSceneId: string;
@@ -16,7 +19,13 @@ export interface IStrings extends LocalizedStringsMethods {
     lightStatus: {
       checking: string;
       lightsOn: string;
-      lightsOff: string;
+      lightsAllOn: string;
+      lightsAllOff: string;
+      error: string;
+    },
+    scenesList: {
+      listing: string;
+      scenes: string;
     }
   }
 

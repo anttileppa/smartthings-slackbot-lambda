@@ -18,6 +18,12 @@
         "Pistä valot pois",
         "Kaikki valot pois"
       ]
+    },
+    {
+      "intent": "scenes.list",
+      "utterances": [
+        "Listaa tilanteet"
+      ]
     }
   ]
 }
