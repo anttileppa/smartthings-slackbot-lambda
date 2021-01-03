@@ -26,7 +26,12 @@ App also needs to notify the Lambda about incoming messages so you need to enabl
 
 ### AWS
 
-TODO
+In AWS create new Lambda funcxtion and upload contents to it from this repositry. You can use build.sh and deploy.sh scripts to deploy the code e.g.
+
+    sh build.sh
+    sh deploy.sh nameOfYourLambda
+    
+You also need a API Gateway with POST method pointing to the Lambda. Remeber to use the Lambda Proxy integration, otherwise the lambda won't receive payloads from the Slack webhook and the integration will not work.
 
 ## Architecture
 
