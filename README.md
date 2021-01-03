@@ -12,6 +12,16 @@ The project also includes basic natural language processing capabilities (NLP) s
 
 ## Installation
 
+### Slack
+
+TODO
+
+### AWS
+
+TODO
+
+### SmartThings
+
 TODO
 
 ## Architecture
