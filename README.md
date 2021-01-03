@@ -40,3 +40,7 @@ You also need a API Gateway with POST method pointing to the Lambda. Remeber to 
 ## Contribution
 
 You can also contribute more features to this project if you wish :)
+
+Open an issue that describes new feature or hotfix, fork the repository in GitHub, make your changes and craete a pull request back to the main repository. Project accepts also documentation enhancements.
+
+If you have an question, you should use open new issue with label "question" in project issue tracker.
