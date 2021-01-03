@@ -12,15 +12,19 @@ The project also includes basic natural language processing capabilities (NLP) s
 
 ## Installation
 
+### SmartThings
+
+TODO
+
 ### Slack
 
-TODO
+First you need to create new Slack application from [https://api.slack.com/apps](https://api.slack.com/apps). 
+
+App needs to be able to write messages, so you need to authorize it for OAuth scope "chat:write" from "OAuth & Permissions". 
+
+App also needs to notify the Lambda about incoming messages so you need to enable events from "Event Subscriptions". Request URL should be the endpoint you created to AWS API Gateway. You will also need to Subscribe to bot events "message.im"
 
 ### AWS
-
-TODO
-
-### SmartThings
 
 TODO
 
