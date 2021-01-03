@@ -14,7 +14,7 @@ The project also includes basic natural language processing capabilities (NLP) s
 
 ### SmartThings
 
-TODO
+SmartThings API requires a personal access token with permissions `r:scenes:*, l:devices, r:devices:*, x:scenes:*`. You can create one from [https://account.smartthings.com/tokens](https://account.smartthings.com/tokens).
 
 ### Slack
 
